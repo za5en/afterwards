@@ -6,37 +6,51 @@ class ANavigationDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double w = MediaQuery.of(context).size.width;
+    double h = MediaQuery.of(context).size.height;
     final theme = Theme.of(context);
-    return Drawer(
-      shadowColor: Colors.black,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.horizontal(right: Radius.circular(20)),
-      ),
-      backgroundColor: theme.colorScheme.surface,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-        child: Stack(
-          children: [
-            SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+    return Center(
+      child: Container(
+        height: h * 0.3,
+        // child: Column(
+        //   children: [
+        //     InkWell(
+        //       customBorder: RoundedRectangleBorder(
+        //         borderRadius: BorderRadius.circular(15),
+        //       ),
+        //       child: ASvg(
+        //         assetName: 'assets/images/menu-button-selected.svg',
+        //         height: 35,
+        //       ),
+        //       onTap: () {
+        //         Navigator.pop(context);
+        //         // Get.back();
+        //       },
+        //     ),
+        child: Container(
+          width: w * 0.95,
+          child: Drawer(
+            shadowColor: Colors.black,
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(20)),
+            ),
+            backgroundColor: theme.colorScheme.surface,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+              child: Stack(
                 children: [
-                  const SizedBox(height: 30),
-                  InkWell(
-                    child: ASvg(
-                      assetName: 'assets/images/menu-button.svg',
-                      color: theme.colorScheme.secondary,
-                      height: 35,
+                  SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [const SizedBox(height: 30)],
                     ),
-                    onTap: () {
-                      Navigator.pop(context);
-                      // Get.back();
-                    },
                   ),
                 ],
               ),
             ),
-          ],
+          ),
+          //   ),
+          // ],
         ),
       ),
     );
