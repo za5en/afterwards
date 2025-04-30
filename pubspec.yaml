@@ -29,6 +29,12 @@ flutter_launcher_icons:
   adaptive_icon_background: "assets/icons/ic_launcher_background.png"
   min_sdk_android: 21
 
+fonts:
+  - family: OpenSans
+    fonts:
+      - asset: assets/fonts/OpenSans/OpenSans-Bold.ttf
+      - asset: assets/fonts/OpenSans/OpenSans-Medium.ttf
+
 flutter:
   assets:
     - assets/images/
