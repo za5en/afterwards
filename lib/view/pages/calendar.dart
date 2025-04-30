@@ -1,4 +1,5 @@
 import 'package:afterwards/view/widgets/a_appbar.dart';
+import 'package:afterwards/view/widgets/navigation_drawer.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/a_calendar.dart';
@@ -10,6 +11,7 @@ class Calendar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AAppBar(),
+      drawer: const ANavigationDrawer(),
       body: SafeArea(
         child: Stack(
           children: [

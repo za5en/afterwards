@@ -1,5 +1,5 @@
+import 'package:afterwards/view/widgets/a_svg.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class AAppBar extends StatelessWidget implements PreferredSizeWidget {
   const AAppBar({super.key});
@@ -8,7 +8,7 @@ class AAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       centerTitle: true,
-      title: SvgPicture.asset('assets/images/logo.svg'),
+      title: ASvg(assetName: 'assets/images/logo.svg'),
       leading: Padding(
         padding: EdgeInsets.all(10.0),
         child: Visibility(
@@ -17,7 +17,7 @@ class AAppBar extends StatelessWidget implements PreferredSizeWidget {
             onTap: () {
               // open navigation drawer
             },
-            child: SvgPicture.asset('assets/images/menu-button.svg'),
+            child: ASvg(assetName: 'assets/images/menu-button.svg'),
           ),
         ),
       ),
@@ -28,7 +28,7 @@ class AAppBar extends StatelessWidget implements PreferredSizeWidget {
             onTap: () {
               // open navigation drawer
             },
-            child: SvgPicture.asset('assets/images/menu-button.svg'),
+            child: ASvg(assetName: 'assets/images/menu-button.svg'),
           ),
         ),
       ],
