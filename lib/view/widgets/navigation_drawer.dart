@@ -10,31 +10,31 @@ class ANavigationDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
-    // double h = MediaQuery.of(context).size.height;
+    double h = MediaQuery.of(context).size.height;
     final theme = Theme.of(context);
 
     List<Map> menu = [
       {
         'name': 'Календарь',
-        'page': 'calendar',
+        'route': '/',
         'image': 'assets/images/calendar.svg',
         'off_image': 'assets/images/calendar-gray.svg',
       },
       {
         'name': 'Статистика',
-        'page': 'stats',
+        'route': '/stats',
         'image': 'assets/images/reports.svg',
         'off_image': 'assets/images/reports-gray.svg',
       },
       {
         'name': 'Параметры',
-        'page': 'settings',
+        'route': '/settings',
         'image': 'assets/images/settings.svg',
         'off_image': 'assets/images/settings-gray.svg',
       },
     ];
 
-    List<int> ranges = [0, 150, 300, 500, 700, 1000];
+    List<int> ranges = [-750, -400, -150, 0, 150, 400, 750];
     List<String> names = [
       'firstLevel',
       'secondLevel',
@@ -42,6 +42,7 @@ class ANavigationDrawer extends StatelessWidget {
       'fourthLevel',
       'fifthLevel',
       'sixthLevel',
+      'seventhLevel',
     ];
 
     String findRating() {
@@ -87,20 +88,45 @@ class ANavigationDrawer extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(top: 10.0),
                         child: SizedBox(
-                          height: 150,
+                          height: menu.length * 45,
                           child: Container(
                             decoration: BoxDecoration(
                               color: theme.colorScheme.primary,
                               borderRadius: BorderRadius.circular(15),
                             ),
-                            child: Expanded(
-                              child: ListView.builder(
-                                itemCount: menu.length,
-                                prototypeItem: AMenuLine(menu: menu.first),
-                                itemBuilder: (context, index) {
-                                  return AMenuLine(menu: menu[index]);
-                                },
-                              ),
+                            child: Column(
+                              children: [
+                                Expanded(
+                                  child: ListView.builder(
+                                    physics:
+                                        const NeverScrollableScrollPhysics(),
+                                    padding: EdgeInsets.symmetric(
+                                      vertical: h * 0.02,
+                                    ),
+                                    itemCount: menu.length,
+                                    itemBuilder: (context, index) {
+                                      return Column(
+                                        children: [
+                                          AMenuLine(menu: menu[index]),
+                                          Visibility(
+                                            visible: index < menu.length - 1,
+                                            child: Padding(
+                                              padding: EdgeInsets.symmetric(
+                                                horizontal: w * 0.04,
+                                              ),
+                                              child: Divider(
+                                                thickness: 0.5,
+                                                color:
+                                                    theme.colorScheme.secondary,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      );
+                                    },
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ),
@@ -114,7 +140,15 @@ class ANavigationDrawer extends StatelessWidget {
                               color: theme.colorScheme.primary,
                               borderRadius: BorderRadius.circular(15),
                             ),
-                            child: Text(findRating()),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  '${findRating()} ($currentRating)',
+                                  style: theme.textTheme.titleLarge,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),

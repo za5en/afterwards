@@ -1,7 +1,9 @@
+import 'package:afterwards/view/pages/search.dart';
 import 'package:afterwards/view/widgets/a_appbar.dart';
 import 'package:afterwards/view/widgets/a_svg.dart';
 import 'package:afterwards/view/widgets/navigation_drawer.dart';
 import 'package:flutter/material.dart';
+import 'package:get/route_manager.dart';
 
 import '../widgets/a_calendar.dart';
 
@@ -10,6 +12,7 @@ class Calendar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double w = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AAppBar(
         title: ASvg(assetName: 'assets/images/logo.svg'),
@@ -17,34 +20,35 @@ class Calendar extends StatelessWidget {
           padding: EdgeInsets.all(10.0),
           child: Builder(
             builder: (context) {
-              return Visibility(
-                visible: true, // depending on settings
-                child: InkWell(
-                  customBorder: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  onTap: () {
-                    Scaffold.of(context).openDrawer();
-                  },
-                  child: ASvg(assetName: 'assets/images/menu-button.svg'),
+              return InkWell(
+                customBorder: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15),
                 ),
+                onTap: () {
+                  Scaffold.of(context).openDrawer();
+                },
+                child: ASvg(assetName: 'assets/images/menu-button.svg'),
               );
             },
           ),
         ),
         actions: [
-          Visibility(
-            visible: false, // depending on settings
+          Padding(
+            padding: const EdgeInsets.all(5.0),
             child: InkWell(
               onTap: () {
-                // open navigation drawer
+                Get.to(Search());
               },
-              child: ASvg(assetName: 'assets/images/menu-button.svg'),
+              child: ASvg(
+                assetName: 'assets/images/search.svg',
+                width: w * 0.1,
+              ),
             ),
           ),
         ],
       ),
       drawer: const ANavigationDrawer(),
+      drawerEnableOpenDragGesture: false,
       body: SafeArea(
         child: Stack(
           children: [

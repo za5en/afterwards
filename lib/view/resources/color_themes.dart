@@ -67,7 +67,7 @@ final _light = ThemeData(
       color: Color.fromRGBO(168, 168, 168, 1),
     ),
     labelMedium: TextStyle(
-      fontSize: 14,
+      fontSize: 16,
       fontWeight: FontWeight.w400,
       color: Color.fromRGBO(168, 168, 168, 1),
     ),
