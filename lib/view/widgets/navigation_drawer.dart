@@ -1,6 +1,7 @@
 import 'package:afterwards/view/widgets/a_menu_line.dart';
 import 'package:afterwards/view/widgets/a_svg.dart';
 import 'package:flutter/material.dart';
+import 'package:get/route_manager.dart';
 
 class ANavigationDrawer extends StatelessWidget {
   const ANavigationDrawer({super.key});
@@ -12,6 +13,7 @@ class ANavigationDrawer extends StatelessWidget {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
     final theme = Theme.of(context);
+    var currentRoute = Get.currentRoute;
 
     List<Map> menu = [
       {
@@ -107,7 +109,32 @@ class ANavigationDrawer extends StatelessWidget {
                                     itemBuilder: (context, index) {
                                       return Column(
                                         children: [
-                                          AMenuLine(menu: menu[index]),
+                                          AMenuLine(
+                                            menu: menu[index],
+                                            onTap:
+                                                menu[index]['route'] !=
+                                                        currentRoute
+                                                    ? () {
+                                                      Get.back();
+                                                      if (currentRoute == '/') {
+                                                        Get.toNamed(
+                                                          menu[index]['route'],
+                                                        );
+                                                      } else {
+                                                        if (menu[index]['route'] !=
+                                                            '/') {
+                                                          Get.offNamed(
+                                                            menu[index]['route'],
+                                                          );
+                                                        } else {
+                                                          Get.offAllNamed(
+                                                            menu[index]['route'],
+                                                          );
+                                                        }
+                                                      }
+                                                    }
+                                                    : () {},
+                                          ),
                                           Visibility(
                                             visible: index < menu.length - 1,
                                             child: Padding(

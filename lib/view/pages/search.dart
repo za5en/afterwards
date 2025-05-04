@@ -1,4 +1,3 @@
-import 'package:afterwards/view/widgets/a_appbar.dart';
 import 'package:afterwards/view/widgets/a_svg.dart';
 import 'package:flutter/material.dart';
 
@@ -17,6 +16,7 @@ class _SearchState extends State<Search> {
     final theme = Theme.of(context);
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
+
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -62,7 +62,7 @@ class _SearchState extends State<Search> {
                               padding: const EdgeInsets.all(5.0),
                               child: InkWell(
                                 onTap: () {
-                                  // clear text field
+                                  _controller.clear();
                                 },
                                 child: ASvg(
                                   assetName: 'assets/images/close-multiply.svg',

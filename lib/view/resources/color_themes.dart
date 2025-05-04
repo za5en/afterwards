@@ -104,8 +104,8 @@ final _light = ThemeData(
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
-      backgroundColor: const Color.fromRGBO(0, 0, 0, 0.85),
-      foregroundColor: const Color.fromRGBO(190, 224, 255, 1),
+      backgroundColor: const Color.fromRGBO(190, 224, 255, 1),
+      foregroundColor: const Color.fromRGBO(0, 0, 0, 0.85),
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(10)),
       ),

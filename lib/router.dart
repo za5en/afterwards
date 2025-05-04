@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'view/pages/calendar.dart';
+import 'view/pages/settings.dart';
+import 'view/pages/stats.dart';
 
 class AfterwardsRouter {
   const AfterwardsRouter();
@@ -18,12 +20,16 @@ class AfterwardsRouter {
       //           settings: settings, builder: (_) => const MainScreen())
       //       : MaterialPageRoute(
       //           settings: settings, builder: (_) => const UpdateScreen());
-      // case '/settings':
-      //   return MaterialPageRoute(
-      //       settings: settings, builder: (_) => const Settings());
-      // case '/stats':
-      //   return MaterialPageRoute(
-      //       settings: settings, builder: (_) => const Stats());
+      case '/settings':
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (_) => const Settings(),
+        );
+      case '/stats':
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (_) => const Stats(),
+        );
       // case '/welcome_screen':
       //   return MaterialPageRoute(
       //       settings: settings, builder: (_) => const WelcomeScreen());

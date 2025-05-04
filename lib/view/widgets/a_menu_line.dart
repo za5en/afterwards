@@ -4,7 +4,8 @@ import 'package:get/route_manager.dart';
 
 class AMenuLine extends StatelessWidget {
   final Map menu;
-  const AMenuLine({super.key, required this.menu});
+  final Function() onTap;
+  const AMenuLine({super.key, required this.menu, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -12,12 +13,7 @@ class AMenuLine extends StatelessWidget {
     final theme = Theme.of(context);
     var currentRoute = Get.currentRoute;
     return InkWell(
-      onTap:
-          menu['route'] != currentRoute
-              ? () {
-                Navigator.pop(context);
-              }
-              : null,
+      onTap: onTap,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
